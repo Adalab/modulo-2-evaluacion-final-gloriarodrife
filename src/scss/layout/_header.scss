@@ -20,13 +20,17 @@
     border-radius: 4px;
     border: 0;
     cursor: pointer;
+
+    &:hover {
+      color: #f8b5d6;
+    }
   }
 
   .input_search {
     padding: 0 0.5rem;
   }
 
-  @media all and (min-width: 500px) {
+  @media all and (min-width: 680px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

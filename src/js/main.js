@@ -53,9 +53,8 @@ function renderBookmarks() {
     button.addEventListener('click', () => {
       // eliminar el bookmark de la lista de bookmarks
 
-      bookmarks.splice(li, 1);
-
       // Preguntar como borrar ese elemento en concreto
+      bookmarks.splice(li, 1);
 
       bookmarkList.innerHTML = '';
       // Modificar el inner html (reenderizar bookmarks)
