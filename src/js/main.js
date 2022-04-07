@@ -49,8 +49,6 @@ function renderBookmarks() {
     li.appendChild(button);
     bookmarkList.appendChild(li);
 
-    // console.log(id);
-
     button.addEventListener('click', () => {
       // eliminar el bookmark de la lista de bookmarks
       // const bookmarkId = bookmark.show.id;
@@ -77,7 +75,7 @@ function clearBookmarks() {
     localStorage.removeItem('bookmarks');
   });
 }
-// Función que rea los elementos
+// Función que crea los elementos
 function listDrinks(listDrinks) {
   for (const item of listDrinks) {
     const liDetail = createListItem(item);
@@ -85,11 +83,13 @@ function listDrinks(listDrinks) {
     drinksList.appendChild(liDetail);
 
     // Evento clik de cada item de la lista de busqueda
-    liDetail.addEventListener('click', () => {
+    liDetail.addEventListener('click', (e) => {
+      e.preventDefault();
       // Si el item no esta en la lista de favoritos, lo añado
       const itemExist = bookmarks.find((element) => element === item);
       if (!itemExist) {
         liDetail.style.border = '2px solid #f8b5d6';
+        liDetail.style.fontStyle = 'Italic';
         bookmarks.push(item);
         // Meto en el local todas mis bebidas favoritas
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -122,4 +122,3 @@ function createListItem(item) {
 }
 
 initApp();
-console.log(bookmarks);
