@@ -20,7 +20,7 @@ searchTvShows();
 function initApp() {
   // cache crudo
   const cacheRaw = localStorage.getItem('bookmarks');
-  // si el cache no es nulo pintaeme lo que hay en favoritos
+  // si el cache no es nulo pintame lo que hay en favoritos
   if (cacheRaw !== null) {
     const cache = JSON.parse(cacheRaw);
     bookmarks = cache;
@@ -46,15 +46,16 @@ function renderBookmarks() {
 
     const button = document.createElement('button');
     button.innerText = 'x';
+
     li.appendChild(button);
     bookmarkList.appendChild(li);
 
     button.addEventListener('click', () => {
       // eliminar el bookmark de la lista de bookmarks
-      // const bookmarkId = bookmark.show.id;
+
+      // bookmarks.splice(li, 1);
 
       // Preguntar como borrar ese elemento en concreto
-      bookmarks.splice(li, 1);
 
       bookmarkList.innerHTML = '';
       // Modificar el inner html (reenderizar bookmarks)
@@ -86,7 +87,9 @@ function listDrinks(listDrinks) {
     liDetail.addEventListener('click', (e) => {
       e.preventDefault();
       // Si el item no esta en la lista de favoritos, lo añado
-      const itemExist = bookmarks.find((element) => element === item);
+      const itemExist = bookmarks.find(
+        (element) => element.idDrink === item.idDrink
+      );
       if (!itemExist) {
         liDetail.style.border = '2px solid #f8b5d6';
         liDetail.style.fontStyle = 'Italic';
