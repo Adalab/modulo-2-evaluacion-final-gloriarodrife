@@ -18,9 +18,16 @@
     gap: 1rem;
     height: 90px;
     overflow-x: auto;
+
+    @media all and (min-width: 680px) {
+      overflow-x: auto;
+    }
   }
   .bookmarks_container > li > img {
-    max-width: 120px;
+    max-width: 100px;
+    @media all and (min-width: 680px) {
+      max-width: 120px;
+    }
   }
 
   .list_container {
