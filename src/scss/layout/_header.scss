@@ -1,0 +1,39 @@
+.toolbar {
+  background-color: $toolbar_background;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 86px;
+
+  .app_name {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .input_search,
+  .submit_button {
+    box-sizing: border-box;
+    height: 30px;
+    border-radius: 4px;
+    border: 0;
+  }
+
+  .input_search {
+    padding: 0 0.5rem;
+  }
+
+  @media all and (min-width: 500px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    height: 50px;
+
+    .input_search {
+      width: 200px;
+    }
+  }
+}
