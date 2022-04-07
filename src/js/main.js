@@ -7,7 +7,7 @@ const API_URL = 'https://www.thecocktaildb.com';
 
 let bookmarks = [];
 
-async function searchTvShows(search) {
+async function searchDrinks(search) {
   const response = await fetch(
     `${API_URL}/api/json/v1/1/search.php?s=${search}`
   );
@@ -16,7 +16,7 @@ async function searchTvShows(search) {
   return data.drinks;
 }
 
-searchTvShows();
+searchDrinks();
 function initApp() {
   // cache crudo
   const cacheRaw = localStorage.getItem('bookmarks');
@@ -32,7 +32,7 @@ function initApp() {
     event.preventDefault();
     drinksList.innerHTML = '';
     const searchValue = inputSearch.value.toLowerCase();
-    const drinks = await searchTvShows(searchValue);
+    const drinks = await searchDrinks(searchValue);
     // Recorro la lista de series
     listDrinks(drinks);
   });
@@ -53,7 +53,7 @@ function renderBookmarks() {
     button.addEventListener('click', () => {
       // eliminar el bookmark de la lista de bookmarks
 
-      // bookmarks.splice(li, 1);
+      bookmarks.splice(li, 1);
 
       // Preguntar como borrar ese elemento en concreto
 
@@ -70,6 +70,7 @@ function clearBookmarks() {
   form.addEventListener('reset', (event) => {
     event.preventDefault();
     bookmarkList.innerHTML = '';
+    drinksList.innerHTML = '';
     bookmarks = [];
 
     //Elimino mis datos del local
@@ -80,6 +81,15 @@ function clearBookmarks() {
 function listDrinks(listDrinks) {
   for (const item of listDrinks) {
     const liDetail = createListItem(item);
+
+    // comprobar si estan en bookmaks
+    const itemExist = bookmarks.find(
+      (element) => element.idDrink === item.idDrink
+    );
+    if (itemExist) {
+      liDetail.style.border = '2px solid #f8b5d6';
+      liDetail.style.fontStyle = 'Italic';
+    }
 
     drinksList.appendChild(liDetail);
 
