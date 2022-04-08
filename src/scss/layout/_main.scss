@@ -30,7 +30,6 @@
   .bookmarks_container > li {
     display: flex;
     flex-direction: column;
-    position: relative;
   }
 
   .bookmarks_container > li > p {
@@ -59,15 +58,14 @@
     border-radius: 4px;
     border: none;
     font-size: 0.5rem;
-    position: absolute;
+    position: relative;
     left: 40px;
-    top: 5px;
-
-    @media all and (min-width: 680px) {
+    bottom: 75px;
+    @media all and (min-width: 500px) {
       max-width: 120px;
       height: 20px;
       left: 100px;
-      top: 0;
+      bottom: 140px;
     }
   }
   .list_container {
@@ -113,7 +111,6 @@
 
     .bookmarks_container {
       flex-direction: column;
-      // height: auto;
       height: 100vh;
       overflow-x: auto;
       width: 180px;
