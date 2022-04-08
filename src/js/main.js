@@ -76,7 +76,7 @@ function clearBookmarks() {
   form.addEventListener('reset', (event) => {
     event.preventDefault();
 
-    bookmarkList.innerHTML = '';
+    // bookmarkList.innerHTML = '';
     drinksList.innerHTML = '';
     bookmarks = [];
 
@@ -85,7 +85,7 @@ function clearBookmarks() {
   });
 }
 // Función que crea los elementos
-async function listDrinks(listDrinks) {
+function listDrinks(listDrinks) {
   for (const item of listDrinks) {
     const liDetail = createListItem(item);
 
