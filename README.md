@@ -45,7 +45,7 @@ El ejercicio también tiene una parte de maquetación con HTML y Sass.
 
 ## Los requisitos que nos piden son:
 
-1.  En primer lugar hay que realizar una estructura básica sobre este modelo.
+1.  En primer lugar hay que realizar una estructura básica.
 2.  Busqueda :
 
         Al hacer clic sobre el botón de Buscar, la aplicación debe conectarse al API abierto de
