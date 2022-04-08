@@ -20,12 +20,11 @@
     border-radius: 4px;
     border: 0;
     cursor: pointer;
-
-    &:hover {
-      color: #f8b5d6;
-    }
   }
 
+  .submit_button:hover {
+    color: #f8b5d6;
+  }
   .input_search {
     padding: 0 0.5rem;
   }
