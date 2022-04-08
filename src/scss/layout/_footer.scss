@@ -1,0 +1,22 @@
+.footer {
+  position: fixed;
+  z-index: 0;
+  bottom: 0;
+  font-size: 0.8rem;
+  width: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0.2rem 1.2rem 0.2rem;
+    gap: 1rem;
+    color: rgb(110, 108, 108);
+
+    &_item {
+      text-decoration: none;
+      cursor: pointer;
+      color: rgb(110, 108, 108);
+    }
+  }
+}
