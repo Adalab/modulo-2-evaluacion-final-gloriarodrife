@@ -43,30 +43,23 @@ function renderBookmarks() {
   for (const bookmark of bookmarks) {
     const li = createListItem(bookmark);
 
-    const idBookmarkElement = document.getElementById(bookmark.idDrink);
-
     const button = document.createElement('button');
     const buttonText = document.createTextNode('x');
     button.appendChild(buttonText);
-
-    button.setAttribute('id', bookmark.idDrink);
 
     li.setAttribute('id', bookmark.idDrink);
 
     li.appendChild(button);
     bookmarkList.appendChild(li);
 
+    const idBookmark = document.getElementById(bookmark.idDrink);
+
     button.addEventListener('click', () => {
-      idBookmarkElement.removeAttribute('style');
-
-      const idBookmark = document.getElementById(bookmark.idDrink);
-
       const index = bookmarks.findIndex(
         (item) => item.idDrink === idBookmark.id
       );
 
-      // console.log(idBookmark);
-
+      bookmarkList.removeAttribute('style');
       // Elimino item
       bookmarks.splice(index, 1);
       bookmarkList.innerHTML = '';
@@ -106,8 +99,6 @@ function listDrinks(listDrinks) {
     }
     //Agrego id al item
 
-    liDetail.setAttribute('id', item.idDrink);
-
     drinksList.appendChild(liDetail);
 
     // Evento clik de cada item de la lista de busqueda
@@ -133,6 +124,8 @@ function listDrinks(listDrinks) {
 
 function createListItem(item) {
   const liDetail = document.createElement('li');
+
+  liDetail.setAttribute('id', item.idDrink);
 
   const nameElement = document.createElement('p');
 
