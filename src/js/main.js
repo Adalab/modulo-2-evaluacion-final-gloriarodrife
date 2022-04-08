@@ -74,6 +74,7 @@ function renderBookmarks() {
 function clearBookmarks() {
   form.addEventListener('reset', (event) => {
     event.preventDefault();
+    inputSearch.value = '';
 
     // bookmarkList.innerHTML = '';
     drinksList.innerHTML = '';
