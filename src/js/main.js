@@ -85,7 +85,7 @@ function clearBookmarks() {
   });
 }
 // Función que crea los elementos
-function listDrinks(listDrinks) {
+async function listDrinks(listDrinks) {
   for (const item of listDrinks) {
     const liDetail = createListItem(item);
 
