@@ -44,7 +44,8 @@ function renderBookmarks() {
     const li = createListItem(bookmark);
 
     const button = document.createElement('button');
-    button.innerText = 'x';
+    const buttonText = document.createTextNode('x');
+    button.appendChild(buttonText);
 
     button.setAttribute('id', bookmark.idDrink);
 
@@ -52,7 +53,6 @@ function renderBookmarks() {
     bookmarkList.appendChild(li);
 
     button.addEventListener('click', () => {
-      // eliminar el bookmark de la lista de bookmarks
       // Buscar el id y eliminarlo del listado de bookmask
       const idBookmark = document.getElementById(bookmark.idDrink);
 
@@ -60,6 +60,7 @@ function renderBookmarks() {
         (item) => item.idDrink === idBookmark.id
       );
 
+      // Elimino item
       bookmarks.splice(index, 1);
 
       bookmarkList.innerHTML = '';
@@ -68,14 +69,13 @@ function renderBookmarks() {
       // Guardar en el local storage
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     });
-
-    // localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   }
 }
 
 function clearBookmarks() {
   form.addEventListener('reset', (event) => {
     event.preventDefault();
+
     bookmarkList.innerHTML = '';
     drinksList.innerHTML = '';
     bookmarks = [];
@@ -97,7 +97,6 @@ function listDrinks(listDrinks) {
       liDetail.style.border = '2px solid #f8b5d6';
       liDetail.style.fontStyle = 'Italic';
     }
-
     drinksList.appendChild(liDetail);
 
     // Evento clik de cada item de la lista de busqueda
@@ -128,6 +127,8 @@ function createListItem(item) {
 
   nameElement.innerText = item.strDrink.toLowerCase();
   liDetail.appendChild(nameElement);
+
+  // Si el elemento no tiene imagen, agrego una por defecto
   if (item) {
     const img = document.createElement('img');
     img.src = item.strDrinkThumb || item.strDrinkThumb;
