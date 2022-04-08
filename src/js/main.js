@@ -33,7 +33,7 @@ function initApp() {
     drinksList.innerHTML = '';
     const searchValue = inputSearch.value.toLowerCase();
     const drinks = await searchDrinks(searchValue);
-    // Recorro la lista de series
+    // Recorro la lista
     listDrinks(drinks);
   });
 
