@@ -75,9 +75,15 @@
     gap: 1rem;
     align-items: center;
     justify-items: center;
-    // height: auto;
     height: 100vh;
     overflow-x: auto;
+
+    @media all and (min-width: 1000px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media all and (min-width: 1200px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
   .list_container > li {
     max-width: fit-content;
