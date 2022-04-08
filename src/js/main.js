@@ -35,9 +35,8 @@ function initApp() {
     const drinks = await searchDrinks(searchValue);
     // Recorro la lista
     listDrinks(drinks);
+    clearBookmarks();
   });
-
-  clearBookmarks();
 }
 function renderBookmarks() {
   for (const bookmark of bookmarks) {
@@ -78,7 +77,8 @@ function clearBookmarks() {
 
     // bookmarkList.innerHTML = '';
     drinksList.innerHTML = '';
-    bookmarks = [];
+    // bookmarks = [];
+    // localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
     //Elimino mis datos del local
     localStorage.removeItem('bookmarks');
