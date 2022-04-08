@@ -31,7 +31,7 @@ function initApp() {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     drinksList.innerHTML = '';
-    const searchValue = inputSearch.value.toLowerCase();
+    const searchValue = inputSearch.value;
     const drinks = await searchDrinks(searchValue);
     // Recorro la lista
     listDrinks(drinks);
@@ -136,7 +136,7 @@ function createListItem(item) {
 
   const nameElement = document.createElement('p');
 
-  nameElement.innerText = item.strDrink.toLowerCase();
+  nameElement.innerText = item.strDrink;
   liDetail.appendChild(nameElement);
 
   // Si el elemento no tiene imagen, agrego una por defecto
