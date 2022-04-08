@@ -47,22 +47,22 @@ function renderBookmarks() {
     const buttonText = document.createTextNode('x');
     button.appendChild(buttonText);
 
-    li.setAttribute('id', bookmark.idDrink);
+    // button.setAttribute('id', bookmark.idDrink);
+    const idBookmark = document.getElementById(bookmark.idDrink);
 
     li.appendChild(button);
     bookmarkList.appendChild(li);
-
-    const idBookmark = document.getElementById(bookmark.idDrink);
 
     button.addEventListener('click', () => {
       const index = bookmarks.findIndex(
         (item) => item.idDrink === idBookmark.id
       );
 
-      bookmarkList.removeAttribute('style');
+      idBookmark.removeAttribute('style');
       // Elimino item
       bookmarks.splice(index, 1);
       bookmarkList.innerHTML = '';
+
       // Modificar el inner html (reenderizar bookmarks)
       renderBookmarks();
 
