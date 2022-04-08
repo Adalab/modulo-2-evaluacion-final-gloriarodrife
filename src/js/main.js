@@ -16,7 +16,7 @@ async function searchDrinks(search) {
   return data.drinks;
 }
 
-searchDrinks();
+// searchDrinks();
 function initApp() {
   // cache crudo
   const cacheRaw = localStorage.getItem('bookmarks');
