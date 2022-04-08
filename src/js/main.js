@@ -42,19 +42,25 @@ function initApp() {
 function renderBookmarks() {
   for (const bookmark of bookmarks) {
     const li = createListItem(bookmark);
-    // const idItem = bookmark.idDrink;
 
     const button = document.createElement('button');
     button.innerText = 'x';
+
+    button.setAttribute('id', bookmark.idDrink);
 
     li.appendChild(button);
     bookmarkList.appendChild(li);
 
     button.addEventListener('click', () => {
       // eliminar el bookmark de la lista de bookmarks
+      // Buscar el id y eliminarlo del listado de bookmask
+      const idBookmark = document.getElementById(bookmark.idDrink);
 
-      // Preguntar como borrar ese elemento en concreto
-      bookmarks.splice(li, 1);
+      const index = bookmarks.findIndex(
+        (item) => item.idDrink === idBookmark.id
+      );
+
+      bookmarks.splice(index, 1);
 
       bookmarkList.innerHTML = '';
       // Modificar el inner html (reenderizar bookmarks)
@@ -62,6 +68,8 @@ function renderBookmarks() {
       // Guardar en el local storage
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     });
+
+    // localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   }
 }
 
