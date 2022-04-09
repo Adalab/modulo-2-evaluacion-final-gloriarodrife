@@ -2,6 +2,7 @@ const form = document.getElementById('form');
 const inputSearch = document.getElementById('search');
 const bookmarkList = document.getElementById('bookmarks');
 const drinksList = document.getElementById('list');
+const button = document.getElementById('button');
 
 const API_URL = 'https://www.thecocktaildb.com';
 
@@ -139,4 +140,9 @@ function createListItem(item) {
   return liDetail;
 }
 
+button.addEventListener('click', () => {
+  bookmarks = [];
+  bookmarkList.innerHTML = '';
+  localStorage.removeItem('bookmarks');
+});
 initApp();
