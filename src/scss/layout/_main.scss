@@ -17,23 +17,30 @@
   }
 
   .bookmarks_container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
     overflow-x: auto;
     height: 90px;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      @media all and (min-width: 680px) {
+        flex-direction: column;
+      }
+    }
 
     @media all and (min-width: 680px) {
       height: 90px;
       overflow-x: auto;
     }
   }
-  .bookmarks_container > li {
+  .bookmarks_container li {
     display: flex;
     flex-direction: column;
   }
 
-  .bookmarks_container > li > p {
+  .bookmarks_container li > p {
     font-weight: bold;
     text-transform: capitalize;
     font-size: 0.5rem;
@@ -45,14 +52,14 @@
       font-size: 1rem;
     }
   }
-  .bookmarks_container > li > img {
+  .bookmarks_container li > img {
     max-width: 60px;
 
     @media all and (min-width: 500px) {
       max-width: 120px;
     }
   }
-  .bookmarks_container > li > button {
+  .bookmarks_container li > button {
     width: 20px;
     height: 15px;
     cursor: pointer;
@@ -71,29 +78,32 @@
   }
   .list_container {
     flex-grow: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    align-items: center;
-    justify-items: center;
     height: 100vh;
     overflow-x: auto;
 
-    @media all and (min-width: 1000px) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    @media all and (min-width: 1200px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: center;
+      justify-items: center;
+
+      @media all and (min-width: 1000px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media all and (min-width: 1200px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
     }
   }
-  .list_container > li {
+  .list_container li {
     max-width: fit-content;
     cursor: pointer;
     text-align: center;
     box-shadow: 2px 2px 5px #999;
   }
 
-  .list_container > li > p {
+  .list_container li > p {
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -104,12 +114,14 @@
       width: 100%;
     }
   }
-  .list_container > li > img {
-    max-width: 120px;
+  .list_container li > img {
+    width: 120px;
+    height: 120px;
 
     @media all and (min-width: 680px) {
       flex-direction: row;
-      max-width: 230px;
+      width: 230px;
+      height: 230px;
     }
   }
 

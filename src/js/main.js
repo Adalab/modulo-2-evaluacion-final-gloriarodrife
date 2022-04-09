@@ -35,10 +35,19 @@ function initApp() {
     const drinks = await searchDrinks(searchValue);
     // Recorro la lista
     listDrinks(drinks);
-    clearBookmarks();
+  });
+
+  form.addEventListener('reset', (event) => {
+    event.preventDefault();
+
+    inputSearch.value = '';
+    drinksList.innerHTML = '';
   });
 }
+
 function renderBookmarks() {
+  bookmarkList.innerHTML = '';
+
   for (const bookmark of bookmarks) {
     const li = createListItem(bookmark);
 
@@ -47,20 +56,19 @@ function renderBookmarks() {
     button.appendChild(buttonText);
 
     // button.setAttribute('id', bookmark.idDrink);
-    const idBookmark = document.getElementById(bookmark.idDrink);
+    // const idBookmark = document.getElementById(bookmark.idDrink);
 
     li.appendChild(button);
     bookmarkList.appendChild(li);
 
     button.addEventListener('click', () => {
-      const index = bookmarks.findIndex(
-        (item) => item.idDrink === idBookmark.id
-      );
+      // const index = bookmarks.findIndex(
+      //   (item) => item.idDrink === idBookmark.id
+      // );
 
-      idBookmark.removeAttribute('style');
+      // idBookmark.removeAttribute('style');
       // Elimino item
-      bookmarks.splice(index, 1);
-      bookmarkList.innerHTML = '';
+      // bookmarks.splice(index, 1);
 
       // Modificar el inner html (reenderizar bookmarks)
       renderBookmarks();
@@ -71,20 +79,6 @@ function renderBookmarks() {
   }
 }
 
-function clearBookmarks() {
-  form.addEventListener('reset', (event) => {
-    event.preventDefault();
-    inputSearch.value = '';
-
-    // bookmarkList.innerHTML = '';
-    drinksList.innerHTML = '';
-    // bookmarks = [];
-    // localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-    //Elimino mis datos del local
-    localStorage.removeItem('bookmarks');
-  });
-}
 // Función que crea los elementos
 function listDrinks(listDrinks) {
   for (const item of listDrinks) {
@@ -95,30 +89,30 @@ function listDrinks(listDrinks) {
       (element) => element.idDrink === item.idDrink
     );
     if (itemExist) {
+      liDetail.classList.add('bookmark');
       liDetail.style.border = '2px solid #f8b5d6';
       liDetail.style.fontStyle = 'Italic';
     }
-    //Agrego id al item
 
     drinksList.appendChild(liDetail);
 
     // Evento clik de cada item de la lista de busqueda
     liDetail.addEventListener('click', (e) => {
       e.preventDefault();
-      // Si el item no esta en la lista de favoritos, lo añado
+
       const itemExist = bookmarks.find(
         (element) => element.idDrink === item.idDrink
       );
+      // Si el item no esta en la lista de favoritos, lo añado
       if (!itemExist) {
+        liDetail.classList.add('bookmark');
         liDetail.style.border = '2px solid #f8b5d6';
         liDetail.style.fontStyle = 'Italic';
         bookmarks.push(item);
         // Meto en el local todas mis bebidas favoritas
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+        renderBookmarks();
       }
-      // limpiamos la lista para evitar que pinte duplicasdos los elementos
-      bookmarkList.innerHTML = '';
-      renderBookmarks();
     });
   }
 }
