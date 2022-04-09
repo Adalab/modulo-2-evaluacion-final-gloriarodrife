@@ -55,23 +55,24 @@ function renderBookmarks() {
     const buttonText = document.createTextNode('x');
     button.appendChild(buttonText);
 
-    // button.setAttribute('id', bookmark.idDrink);
-    // const idBookmark = document.getElementById(bookmark.idDrink);
-
     li.appendChild(button);
     bookmarkList.appendChild(li);
 
     button.addEventListener('click', () => {
-      // const index = bookmarks.findIndex(
-      //   (item) => item.idDrink === idBookmark.id
-      // );
+      const index = bookmarks.findIndex(
+        (item) => item.idDrink === bookmark.idDrink
+      );
 
-      // idBookmark.removeAttribute('style');
       // Elimino item
-      // bookmarks.splice(index, 1);
+      bookmarks.splice(index, 1);
 
-      // Modificar el inner html (reenderizar bookmarks)
+      const bookmarkElement = document.getElementById(bookmark.idDrink);
+      if (bookmarkElement) {
+        bookmarkElement.classList.remove('highlight');
+      }
+
       renderBookmarks();
+      // Modificar el inner html (reenderizar bookmarks)
 
       // Guardar en el local storage
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -84,14 +85,14 @@ function listDrinks(listDrinks) {
   for (const item of listDrinks) {
     const liDetail = createListItem(item);
 
+    liDetail.setAttribute('id', item.idDrink);
+
     // comprobar si estan en bookmaks
     const itemExist = bookmarks.find(
       (element) => element.idDrink === item.idDrink
     );
     if (itemExist) {
-      liDetail.classList.add('bookmark');
-      liDetail.style.border = '2px solid #f8b5d6';
-      liDetail.style.fontStyle = 'Italic';
+      liDetail.classList.add('highlight');
     }
 
     drinksList.appendChild(liDetail);
@@ -105,9 +106,8 @@ function listDrinks(listDrinks) {
       );
       // Si el item no esta en la lista de favoritos, lo añado
       if (!itemExist) {
-        liDetail.classList.add('bookmark');
-        liDetail.style.border = '2px solid #f8b5d6';
-        liDetail.style.fontStyle = 'Italic';
+        liDetail.classList.add('highlight');
+
         bookmarks.push(item);
         // Meto en el local todas mis bebidas favoritas
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -119,8 +119,6 @@ function listDrinks(listDrinks) {
 
 function createListItem(item) {
   const liDetail = document.createElement('li');
-
-  liDetail.setAttribute('id', item.idDrink);
 
   const nameElement = document.createElement('p');
 
