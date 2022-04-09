@@ -1,11 +1,14 @@
 .toolbar {
-  background-color: $toolbar_background;
+  background-color: white;
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.8rem;
   height: 86px;
+  font-size: 0.8rem;
+  padding-top: 1rem;
 
   .app_name {
     font-weight: bold;
@@ -21,20 +24,33 @@
     border: 0;
     cursor: pointer;
   }
+  .submit_button {
+    background-color: #f8b5d6;
+    color: rgb(29, 29, 132);
+  }
+  .reset {
+    background-color: #e5ddf1;
 
+    &:hover {
+      background-color: #dbcaf4 !important;
+    }
+  }
   .submit_button:hover {
-    color: #f8b5d6;
+    // lighting-color: #f8b5d6 -80%;
+    background-color: hsl(331, 100%, 90%);
   }
   .input_search {
     padding: 0 0.5rem;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 249, 249);
   }
 
   @media all and (min-width: 680px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-    height: 50px;
+    // flex-direction: row;
+    // justify-content: space-between;
+    // align-items: center;
+    // padding: 0 1rem;
+    height: 100px;
 
     .input_search {
       width: 200px;

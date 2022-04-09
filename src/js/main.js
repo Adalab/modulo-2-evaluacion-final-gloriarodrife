@@ -143,6 +143,7 @@ function createListItem(item) {
 button.addEventListener('click', () => {
   bookmarks = [];
   bookmarkList.innerHTML = '';
+  drinksList.innerHTML = '';
   localStorage.removeItem('bookmarks');
 });
 initApp();
