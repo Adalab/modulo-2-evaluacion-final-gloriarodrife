@@ -32,19 +32,30 @@ function initApp() {
     event.preventDefault();
     drinksList.innerHTML = '';
     const searchValue = inputSearch.value;
-    const drinks = await searchDrinks(searchValue);
-    // Recorro la lista
-    if (drinks === null) {
+
+    if (searchValue === '') {
       const messageResults = document.createElement('p');
       messageResults.classList.add('message_results');
       const textResults = document.createTextNode(
-        'No se han obtenido resultados'
+        'Introduce algún valor para la busqueda'
       );
       messageResults.appendChild(textResults);
       drinksList.appendChild(messageResults);
-      // drinksList.innerHTML = 'No hay conincidencias';
     } else {
-      listDrinks(drinks);
+      const drinks = await searchDrinks(searchValue);
+      // Recorro la lista
+      if (drinks === null) {
+        const messageResults = document.createElement('p');
+        messageResults.classList.add('message_results');
+        const textResults = document.createTextNode(
+          'No se han obtenido resultados'
+        );
+        messageResults.appendChild(textResults);
+        drinksList.appendChild(messageResults);
+        // drinksList.innerHTML = 'No hay conincidencias';
+      } else {
+        listDrinks(drinks);
+      }
     }
   });
 
