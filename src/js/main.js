@@ -36,7 +36,6 @@ function initApp() {
     // Recorro la lista
     if (drinks === null) {
       const messageResults = document.createElement('p');
-
       messageResults.classList.add('message_results');
       const textResults = document.createTextNode(
         'No se han obtenido resultados'
@@ -54,6 +53,14 @@ function initApp() {
 
     inputSearch.value = '';
     drinksList.innerHTML = '';
+  });
+
+  button.addEventListener('click', () => {
+    bookmarks = [];
+    bookmarkList.innerHTML = '';
+    drinksList.innerHTML = '';
+
+    localStorage.removeItem('bookmarks');
   });
 }
 
@@ -151,10 +158,4 @@ function createListItem(item) {
   return liDetail;
 }
 
-button.addEventListener('click', () => {
-  bookmarks = [];
-  bookmarkList.innerHTML = '';
-  drinksList.innerHTML = '';
-  localStorage.removeItem('bookmarks');
-});
 initApp();
