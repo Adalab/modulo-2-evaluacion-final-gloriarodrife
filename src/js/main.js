@@ -17,7 +17,6 @@ async function searchDrinks(search) {
   return data.drinks;
 }
 
-// searchDrinks();
 function initApp() {
   // cache crudo
   const cacheRaw = localStorage.getItem('bookmarks');
@@ -35,7 +34,19 @@ function initApp() {
     const searchValue = inputSearch.value;
     const drinks = await searchDrinks(searchValue);
     // Recorro la lista
-    listDrinks(drinks);
+    if (drinks === null) {
+      const messageResults = document.createElement('p');
+
+      messageResults.classList.add('message_results');
+      const textResults = document.createTextNode(
+        'No se han obtenido resultados'
+      );
+      messageResults.appendChild(textResults);
+      drinksList.appendChild(messageResults);
+      // drinksList.innerHTML = 'No hay conincidencias';
+    } else {
+      listDrinks(drinks);
+    }
   });
 
   form.addEventListener('reset', (event) => {

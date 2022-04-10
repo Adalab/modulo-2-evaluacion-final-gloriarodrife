@@ -89,12 +89,11 @@
     border-radius: 50%;
     background-color: #cdbee3;
     color: #1d1d84;
-    // bottom: 75px;
     @media all and (min-width: 680px) {
       max-width: 120px;
       height: 20px;
-      left: 110px;
-      bottom: 160px;
+      left: 105px;
+      bottom: 165px;
     }
   }
   .list_container {
@@ -114,6 +113,17 @@
       }
       @media all and (min-width: 1200px) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+    }
+
+    .message_results {
+      width: max-content;
+      text-transform: none;
+      color: #1d1d84;
+      font-size: 1rem;
+
+      @media all and (min-width: 680px) {
+        font-size: 1.4rem;
       }
     }
   }
