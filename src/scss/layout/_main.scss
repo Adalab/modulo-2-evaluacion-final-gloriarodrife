@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    background-color: rgb(247, 247, 249);
+    background-color: $background_bookmarks;
     ul {
       display: flex;
       flex-direction: row;
@@ -41,7 +41,7 @@
   .bookmarks_container li {
     display: flex;
     flex-direction: column;
-    background-color: #fde8f2;
+    background-color: $background_cards;
     border: 0.4px solid rgba(0, 0, 0, 0.1);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1), 2px 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -87,8 +87,8 @@
     position: relative;
     left: 40px;
     border-radius: 50%;
-    background-color: #cdbee3;
-    color: #1d1d84;
+    background-color: $background_button;
+    color: $color_text;
     @media all and (min-width: 680px) {
       max-width: 120px;
       height: 20px;
@@ -119,11 +119,11 @@
     .message_results {
       width: max-content;
       text-transform: none;
-      color: #1d1d84;
-      font-size: 1rem;
+      color: black;
+      font-size: 0.8rem;
 
       @media all and (min-width: 680px) {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
     }
   }
@@ -172,14 +172,14 @@
   }
 }
 
-.button {
+.button_bookmarks {
   box-sizing: border-box;
   height: 30px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   font-size: 0.6rem;
-  color: #1d1d84;
+  color: $color_text;
   background: none;
 
   &:hover {
@@ -190,6 +190,6 @@
   }
 }
 .highlight {
-  border: 3px solid #fde8f2 !important;
+  border: 3px solid $background_cards !important;
   font-style: italic;
 }
