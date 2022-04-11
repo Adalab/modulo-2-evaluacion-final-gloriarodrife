@@ -2,7 +2,7 @@ const form = document.getElementById('form');
 const inputSearch = document.getElementById('search');
 const bookmarkList = document.getElementById('bookmarks');
 const drinksList = document.getElementById('list');
-const button = document.getElementById('button');
+const buttonFav = document.getElementById('button');
 
 const API_URL = 'https://www.thecocktaildb.com';
 
@@ -28,6 +28,7 @@ function initApp() {
   }
 
   // sumbit y reset solo lo tienen los formularios
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     drinksList.innerHTML = '';
@@ -65,14 +66,6 @@ function initApp() {
     inputSearch.value = '';
     drinksList.innerHTML = '';
   });
-
-  button.addEventListener('click', () => {
-    bookmarks = [];
-    bookmarkList.innerHTML = '';
-    drinksList.innerHTML = '';
-
-    localStorage.removeItem('bookmarks');
-  });
 }
 
 function renderBookmarks() {
@@ -93,7 +86,27 @@ function renderBookmarks() {
         (item) => item.idDrink === bookmark.idDrink
       );
 
-      // Elimino item
+      bookmarks.splice(index, 1);
+
+      const bookmarkElement = document.getElementById(bookmark.idDrink);
+      if (bookmarkElement) {
+        bookmarkElement.classList.remove('highlight');
+      }
+
+      // Modificar el inner html (reenderizar bookmarks)
+      renderBookmarks();
+
+      // Guardar en el local storage
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    });
+
+    buttonFav.addEventListener('click', () => {
+      bookmarks = [];
+      bookmarkList.innerHTML = '';
+      const index = bookmarks.findIndex(
+        (item) => item.idDrink === bookmark.idDrink
+      );
+
       bookmarks.splice(index, 1);
 
       const bookmarkElement = document.getElementById(bookmark.idDrink);
@@ -102,10 +115,8 @@ function renderBookmarks() {
       }
 
       renderBookmarks();
-      // Modificar el inner html (reenderizar bookmarks)
 
-      // Guardar en el local storage
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+      localStorage.removeItem('bookmarks');
     });
   }
 }
