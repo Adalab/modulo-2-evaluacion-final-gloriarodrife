@@ -121,7 +121,7 @@
       text-transform: none;
       color: black;
       font-size: 0.8rem;
-      padding-left: 2.5rem;
+      grid-area: 1 /1 / 2/ 3;
 
       @media all and (min-width: 680px) {
         font-size: 1.2rem;
