@@ -3,6 +3,7 @@ const inputSearch = document.getElementById('search');
 const bookmarkList = document.getElementById('bookmarks');
 const drinksList = document.getElementById('list');
 const buttonFav = document.getElementById('button');
+const buttonLog = document.getElementById('buttonlog');
 
 const API_URL = 'https://www.thecocktaildb.com';
 
@@ -118,6 +119,11 @@ function renderBookmarks() {
 
       localStorage.removeItem('bookmarks');
     });
+
+    buttonLog.addEventListener('click', () => {
+      const favoritos = bookmarks.length;
+      console.log(`Tienes ${favoritos}`);
+    });
   }
 }
 
@@ -175,6 +181,46 @@ function createListItem(item) {
     const img = document.createElement('img');
     img.src = `./assets/images/images.jpeg`;
     liDetail.appendChild(img);
+  }
+
+  if (item.strIngredient4 === null) {
+    const listIngredients = document.createElement('ul');
+    const ingredient1 = document.createElement('li');
+    ingredient1.innerText = item.strIngredient1;
+
+    const ingredient2 = document.createElement('li');
+    ingredient2.innerText = item.strIngredient2;
+
+    const ingredient3 = document.createElement('li');
+    ingredient3.innerText = item.strIngredient3;
+
+    listIngredients.appendChild(ingredient1);
+    listIngredients.appendChild(ingredient2);
+
+    listIngredients.appendChild(ingredient3);
+
+    liDetail.appendChild(listIngredients);
+  } else {
+    const listIngredients = document.createElement('ul');
+    const ingredient1 = document.createElement('li');
+    ingredient1.innerText = item.strIngredient1;
+
+    const ingredient2 = document.createElement('li');
+    ingredient2.innerText = item.strIngredient2;
+
+    const ingredient3 = document.createElement('li');
+    ingredient3.innerText = item.strIngredient3;
+
+    const ingredient4 = document.createElement('li');
+    ingredient4.innerText = item.strIngredient4;
+
+    listIngredients.appendChild(ingredient1);
+    listIngredients.appendChild(ingredient2);
+
+    listIngredients.appendChild(ingredient3);
+    listIngredients.appendChild(ingredient4);
+
+    liDetail.appendChild(listIngredients);
   }
 
   return liDetail;
